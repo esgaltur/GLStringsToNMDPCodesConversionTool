@@ -1,0 +1,9 @@
+{
+  "name": "TWProj",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "mysql2": "^1.5.1",
+    "node_modules/jquery": "latest"
+  }
+}

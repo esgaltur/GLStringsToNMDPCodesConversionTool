@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css"  media="screen"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <title>About web</title>
+</head>
+
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo center">DNA Conversion Tool</a>
+        <a href="index.html" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="about.html"><i class="material-icons left">info</i>About web</a></li>
+            <li><a href="creator.html"><i class="material-icons left">info</i>About creator</a></li>
+            <li><a href="glstring-conversion.html"><i class="material-icons left">build</i>GL-String conversion</a></li>
+
+        </ul>
+        <ul class="side-nav" id="mobile">
+
+            <li><a href="about.html"><i class="material-icons left">info</i>About web</a></li>
+            <li><a href="creator.html"><i class="material-icons left">info</i>About creator</a></li>
+            <li><a href="glstring-conversion.html"><i class="material-icons left">build</i>GL-String conversion</a></li>
+        </ul>
+    </div>
+</nav>
+<!--Import jQuery before materialize.js-->
+<div class="container">
+    <div class="row">
+        <div class="col s6 m5">
+            <div class="card-panel white"> <h3>
+          <span>
+            What is HLA(DNA)?
+          </span></h3>
+              <p> The HLA gene family provides instructions for making a group of related proteins known as the human leukocyte antigen (HLA) complex.
+                The HLA complex helps the immune system distinguish the body's own proteins from proteins made by foreign invaders such as viruses and bacteria.
+              </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m7">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/GlStrings.PNG" alt="GL-String definition">
+                    <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                    <p class="center">GL-String definition</p>
+                </div>
+                <div class="card-action center">
+                    <a href="https://www.ncbi.nlm.nih.gov/pubmed/23849068">More about GL Strings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".button-collapse").sideNav()
+        $("#footer").load("footer.html");
+    })
+</script>
+<div id="footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dna conversion tool </title>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo center">DNA Conversion Tool</a>
+        <a href="index.html" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="about.html"><i class="material-icons left">info</i>About web</a></li>
+            <li><a href="creator.html"><i class="material-icons left">info</i>About creator</a></li>
+            <li><a href="glstring-conversion.html"><i class="material-icons left">build</i>GL-String conversion</a></li>
+
+        </ul>
+        <ul class="side-nav" id="mobile">
+            <li><a href="about.html"><i class="material-icons left">info</i>About web</a></li>
+            <li><a href="creator.html"><i class="material-icons left">info</i>About creator</a></li>
+            <li><a href="glstring-conversion.html"><i class="material-icons left">build</i>GL-String conversion</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col s6 m9">
+            <div id="contact" class="section scrollspy">
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <img class="circle responsive-img"  alt="Me" src="images/about_first.jpg"/>
+                                <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s10">
+                                <span class="black-text"> </span>
+                                <h3> Dmitriy Sosnovich</h3>
+                                <div><i class="material-icons">phone</i>+420777449973</div>
+                                <div><i class="material-icons">email</i>development@esgaltur.com</div>
+                                <div><i class="material-icons">facebook</i>FB: esgaltur</div>
+                                <div><i class="material-icons">person</i>about.me/esgaltur</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div id="projects" class="section scrollspy">
+            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                    <div class="row valign-wrapper">
+                        <div class="col s2">
+                            <img class="circle responsive-img"
+                         alt="GitHub Logo"        src="https://images.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.tutsplus.com%2Fnet%2Fuploads%2F2013%2F08%2Fgithub-collab-retina-preview.gif&f=1"/>
+                            <!-- notice the "circle" class -->
+                        </div>
+                        <div class="col s10">
+                            <span class="black-text"> </span>
+                            <h3>My projects on GitHub</h3>
+                            <div><a href="https://github.com/esgaltur/myScientificPrimeNumResearch">Research of prime
+                                numbers</a></div>
+                            <div><a href="https://github.com/esgaltur/MaxWeight">Get maximal weight for your bench
+                                press</a></div>
+                            <div><a href="http://github.com/esgaltur">See more...</a></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $(".button-collapse").sideNav();
+
+        $("#footer").load("footer.html");
+    })
+</script>
+<div id="footer"></div>
+</body>
+
+</html>

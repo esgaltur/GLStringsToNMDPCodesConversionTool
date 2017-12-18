@@ -1,18 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css"  media="screen"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="js/dna-conversion-tool.js"></script>
+    <title>Dna Conversion Tool</title>
 </head>
-
 <body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo center">DNA Conversion Tool</a>
+        <a href="index.html" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="about.html"><i class="material-icons left">info</i>About web</a></li>
+            <li><a href="creator.html"><i class="material-icons left">info</i>About creator</a></li>
+            <li><a href="glstring-conversion.html"><i class="material-icons left">build</i>GL-String conversion</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile">
+            <li><a href="about.html"><i class="material-icons left">info</i>About web</a></li>
+            <li><a href="creator.html"><i class="material-icons left">info</i>About creator</a></li>
+            <li><a href="glstring-conversion.html"><i class="material-icons left">build</i>GL-String conversion</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="Locus" class="red-text text-accent-2">Locus:</label>
+                    <br>
+                    <input id="Locus"  class="validate"  style="width: 100px;"/>
+                </div>
+                <div class="input-field col s12 ">
+                    <textarea id="textarea_input"  class="materialize-textarea"></textarea>
+                    <label for="textarea_input"  class="red-text text-accent-2">Input</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="btn waves-effect red accent-2" id="btnConvert">Convert</div>
+        </div>
+    </div>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea_result" class="materialize-textarea active"></textarea>
+                    <label for="textarea_result" id="lbltextarea_result" class="red-text text-accent-2">Result</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script>
+$(document).ready(function(){
+
+    let progr = $('.progress')
+    progr.hide();
+    $(".button-collapse").sideNav()
+    $("#footer").load("footer.html");
+
+$('#btnConvert').click(function () {
+    progr.show();
+    let txt = $('#textarea_input');
+    console.log(txt.val());
+    let glString = new GLString(txt.val());
+    let file = loadF('js/data/numer.v3.txt');
+
+     filearr =  file.split("\n");
+    let i = 0;
+    let f = [];
+    for (i = 0; i < filearr.length; i++){
+        tmpF = filearr[i].replace(/\s/g, '+').replace(/\t/g, '+').split('+');
+        let tmpNum = new Numeric(tmpF[0],tmpF[1]);
+        f.push(tmpNum);
+    }
+
+    nmdpCode = new NMDPCodeList(f);
+    let locus = $("#Locus").val();
+    let clearString = String(glString.doClear());
+    let NMDPCode = nmdpCode.FindNMDPFromClearedString(clearString);
+    if (NMDPCode !== "" && NMDPCode !== undefined && NMDPCode !== null) {
+        $('#lbltextarea_result').addClass("active");
+        $('#textarea_result').val(locus + "*" + glString.getFamily() + ":" + NMDPCode);
+    }
+    else if (NMDPCode === "" || NMDPCode === undefined || NMDPCode === null) {
+        clearString = String(glString.doClear2());
+        NMDPCode = nmdpCode.FindNMDPFromClearedString(clearString);
+        $('#lbltextarea_result').addClass("active");
+        $('#textarea_result').val(locus + "*" + glString.getFamily() + ":" + NMDPCode);
+    }
+    file   = null;
+    filearr= null;
+    delete   file;
+    delete   filearr;
+    progr.hide();
+    })
+
+
+    });
+
+
+</script>
+<div id="footer"></div>
 </body>
+
 </html>
