@@ -44,7 +44,7 @@
                     <input id="Locus"  class="validate"  style="width: 100px;"/>
                 </div>
                 <div class="input-field col s12 ">
-                    <textarea id="textarea_input"  class="materialize-textarea"></textarea>
+                    <textarea id="textarea_input" style="color:white" class="materialize-textarea"></textarea>
                     <label for="textarea_input"  class="red-text text-accent-2">Input</label>
                 </div>
             </div>
@@ -72,9 +72,11 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="js/materialize.min.js"></script>
 <script>
+
 $(document).ready(function(){
 
     let progr = $('.progress')
+    $("#locusErr").hide();
     progr.hide();
     $(".button-collapse").sideNav()
     $("#footer").load("footer.html");
@@ -95,19 +97,37 @@ $('#btnConvert').click(function () {
         f.push(tmpNum);
     }
 
+
     nmdpCode = new NMDPCodeList(f);
-    let locus = $("#Locus").val();
-    let clearString = String(glString.doClear());
+    let locus = $("#Locus");
+    let locusVal = "";
+    locus.keyup(function () {
+        locusVal = locus.val();
+        if((locusVal !== 'A')&&
+        (locusVal !== 'B')&&
+        (locusVal !== 'C')&&
+        (locusVal !== 'DPB')&&
+        (locusVal !== 'DQB')&&
+        (locusVal !== 'DRB')&&
+        (locusVal !== 'DRB')){
+            $('#locusErr').show();
+
+        }
+
+
+    });
+    locusVal = locus.val();
+    let clearString = String(glString.doClear(locusVal));
     let NMDPCode = nmdpCode.FindNMDPFromClearedString(clearString);
     if (NMDPCode !== "" && NMDPCode !== undefined && NMDPCode !== null) {
         $('#lbltextarea_result').addClass("active");
-        $('#textarea_result').val(locus + "*" + glString.getFamily() + ":" + NMDPCode);
+        $('#textarea_result').val(locusVal + "*" + glString.getFamily(locusVal) + ":" + NMDPCode);
     }
     else if (NMDPCode === "" || NMDPCode === undefined || NMDPCode === null) {
         clearString = String(glString.doClear2());
         NMDPCode = nmdpCode.FindNMDPFromClearedString(clearString);
         $('#lbltextarea_result').addClass("active");
-        $('#textarea_result').val(locus + "*" + glString.getFamily() + ":" + NMDPCode);
+        $('#textarea_result').val(locusVal + "*" + glString.getFamily(locusVal) + ":" + NMDPCode);
     }
     file   = null;
     filearr= null;
